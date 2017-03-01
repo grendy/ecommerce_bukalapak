@@ -1,6 +1,6 @@
 # ecommerce_bukalapak
 Crawling bukalapak
-##install scrapy on centos
+##Install scrapy on centos
 1. sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 2. yum update -y
 3. yum install python-pip -y
@@ -12,3 +12,11 @@ Crawling bukalapak
 9. yum install libffi libffi-devel -y
 10. CFLAGS="-O0" pip install lxml
 11. pip install scrapy
+
+##Install selenium
+pip install selenium
+##Install xvfb and PyVirtualDisplay for running browser on background process
+1. yum install xorg-x11-server-Xvfb
+2. pip install PyVirtualDisplay
+##Browser version
+Firefox browser version must 45.xx 
