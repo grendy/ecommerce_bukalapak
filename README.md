@@ -1,5 +1,5 @@
 # ecommerce_bukalapak
-Crawling bukalapak
+Crawling bukalapak all item on bukalapak
 ##Install scrapy on centos
 ```bash 
 sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm </br>
@@ -16,25 +16,31 @@ pip install scrapy
 ```
 
 ##Install selenium
+Selenium version must 2.53.6
 ```bash
 pip install selenium
 ```
 ##Install xvfb and PyVirtualDisplay for running browser on background process
+Python2.7 must be installed on the device
 ```bash
 yum install xorg-x11-server-Xvfb 
 pip install PyVirtualDisplay 
 ```
 ##Browser version
+Browser used is Firefox browser
 ```bash
-Firefox browser version must 45.xx 
+Firefox browser version must 45.0.2 or 45.xx.xx 
 ```
 ##Running browser on background process
+To running browser on background process, install xvfb and pyVirtualDisplay
 ```bash
-display = Display(visible=0, size=(800,600)) </br>
-display.start() </br>
-driver = webdriver.Firefox() </br>
+from pyvirtualdisplay import Display
+display = Display(visible=0, size=(800,600)) 
+display.start() 
+driver = webdriver.Firefox() 
 ```
 ##Connect to mysql using MySQLdb library
+Must insert mysql configuration into settings.py on scrapy </br>
 ```bash
 conn=MySQLdb.connect(  
             host=crawler.settings['MYSQL_HOST'], 
