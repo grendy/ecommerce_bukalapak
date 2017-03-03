@@ -2,7 +2,7 @@
 Crawling bukalapak all item on bukalapak
 ##Install scrapy on centos
 ```bash 
-sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm </br>
+sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 yum update -y 
 yum install python-pip -y 
 yum install python-devel -y 
@@ -49,4 +49,26 @@ conn=MySQLdb.connect(
             passwd=crawler.settings['MYSQL_PASS'],
             db=crawler.settings['MYSQL_DB'])
         return cls(conn)
+```
+##Take content
+To take content in accordance required use xpath or css selector
+```bash
+response.xpath('//*[contains(@id, "frmSaveListing")]/ul/li[' + str(i) + ']//*[contains(@class, "article-right")]/span/text()').extract_first()
+```
+##To click button
+To click , must be known id or xpath first
+```bash
+driver.find_element_by_id('s_imgBtnSearch').click()
+```
+##Running engine
+To running engine use crontab for automatic scheduling
+```bash
+2 * * * * cd /root/crawler/twitter && python2.7 twitter_api.py > /dev/null 2>&1
+2 * * * * cd /root/crawler/twitter && python2.7 twitter_api2.py > /dev/null 2>&1
+2 * * * * cd /root/crawler/twitter && python2.7 twitter_api3.py > /dev/null 2>&1
+2 * * * * cd /root/crawler/twitter && python2.7 twitter_api4.py > /dev/null 2>&1
+2 * * * * cd /root/crawler/twitter && python2.7 twitter_api5.py > /dev/null 2>&1
+2 * * * * cd /root/crawler/twitter && python2.7 twitter_api6.py > /dev/null 2>&1
+8 * * * * cd /root/crawler/twitter && python2.7 migrasi.py > /dev/null 2>&1
+59 * * * * kill -9 $(ps -ef|grep "twitter_api.py"|grep -v "grep"|awk '{print $2}') %% kill -9 $(ps -ef|grep "twitter_api2.py"|grep -v "grep"|awk '{print $2}')
 ```
